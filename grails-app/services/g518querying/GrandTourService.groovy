@@ -2,6 +2,8 @@ package g518querying
 
 import grails.gorm.transactions.Transactional
 
+import java.time.Year
+
 @Transactional
 class GrandTourService {
 
@@ -23,5 +25,13 @@ class GrandTourService {
 
     def allToursForDates( startDate, endDate ) {
         GrandTour.where { start in  startDate..endDate }.list()
+    }
+
+    def findByCountry( Country country ) {
+        GrandTour.findAll( "from GrandTour g where g.country=:country", [country: country] )
+    }
+
+    def findByYearIn( Integer... years ) {
+        GrandTour.findAll( "from GrandTour g where g.year in (:years)", [years: years.collect { Year.of(it)}] )
     }
 }
