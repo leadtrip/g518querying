@@ -62,6 +62,17 @@ class GrandTourServiceSpec extends Specification implements ServiceUnitTest<Gran
             allExcluding[0].name == 'La Vuelta 2022'
     }
 
+    void "test allToursExcludingAfter"() {
+        given:
+            def tdf2022 = service.allToursForCountry( Country.FRANCE )[0].id
+            def startDate = LocalDate.of(2022, Month.JANUARY, 22)
+        when:
+            def allExcluding = service.allToursExcludingAfter( [tdf2022], startDate )
+        then:
+            allExcluding.size() == 1
+            allExcluding[0].name == 'La Vuelta 2022'
+    }
+
     void "test allToursForDates"() {
         given:
             def startDate = LocalDate.of(2022, Month.AUGUST, 1)

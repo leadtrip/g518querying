@@ -17,6 +17,10 @@ class GrandTourService {
         GrandTour.where { !(id in excludeList) }.list()
     }
 
+    def allToursExcludingAfter( excludeList, startDate ) {
+        GrandTour.where { !(id in excludeList) && start > startDate }.list()
+    }
+
     def allToursForDates( startDate, endDate ) {
         GrandTour.where { start in  startDate..endDate }.list()
     }
