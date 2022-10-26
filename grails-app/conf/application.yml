@@ -1,4 +1,6 @@
 ---
+server:
+    port: 10011
 grails:
     profile: web
     codegen:
@@ -99,6 +101,7 @@ grails:
 
 ---
 hibernate:
+    format_sql: true
     cache:
         queries: false
         use_second_level_cache: false
@@ -109,6 +112,7 @@ dataSource:
     driverClassName: org.h2.Driver
     username: sa
     password: ''
+    #logSql: true
 
 environments:
     development:
