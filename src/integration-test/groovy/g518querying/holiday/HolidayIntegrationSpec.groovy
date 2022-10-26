@@ -24,7 +24,7 @@ class HolidayIntegrationSpec extends Specification{
         given:
             addHoliday()
         when:
-            Holiday myHol = holidayService.getHolidayCriteriaStandard('MyHol')[0]
+            Holiday myHol = holidayService.getHolidayCriteriaStandard('MyHol')
         then:
             validateHoliday(myHol)
     }
@@ -33,7 +33,7 @@ class HolidayIntegrationSpec extends Specification{
         given:
             addHoliday()
         when:
-            Holiday myHol = holidayService.getHolidayCriteriaEagerJoin('MyHol')[0]
+            Holiday myHol = holidayService.getHolidayCriteriaEagerJoin('MyHol')
         then:
             validateHoliday(myHol)
     }
@@ -42,7 +42,7 @@ class HolidayIntegrationSpec extends Specification{
         given:
             addHoliday()
         when:
-           Holiday myHol = holidayService.getHolidayCriteriaEagerSelects('MyHol')[0]
+           Holiday myHol = holidayService.getHolidayCriteriaEagerSelects('MyHol')
         then:
             validateHoliday(myHol)
     }

@@ -46,7 +46,7 @@ class HolidayService{
      * @return
      */
     def getHolidayCriteriaStandard(String name) {
-        Holiday.createCriteria().list {
+        Holiday.createCriteria().get {
             eq "name", name
         }
     }
@@ -81,7 +81,7 @@ class HolidayService{
      * @return
      */
     def getHolidayCriteriaEagerJoin(String name) {
-        Holiday.createCriteria().list {
+        Holiday.createCriteria().get {
             eq "name", name
             join 'locationInfo'                     // only gets the locationInfo, not the continent & country
             join 'supplier'                         // only gets supplier
@@ -137,7 +137,7 @@ class HolidayService{
      * @return
      */
     def getHolidayCriteriaEagerSelects(String name) {           // just stating the associations fetches them
-        Holiday.createCriteria().list {
+        Holiday.createCriteria().get {
             eq "name", name
             locationInfo {
                 continent{}
